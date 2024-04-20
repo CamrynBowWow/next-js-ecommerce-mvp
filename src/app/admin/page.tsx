@@ -8,19 +8,12 @@ async function getSalesData() {
 		_sum: { pricePaidInCents: true },
 		_count: true,
 	});
-	// await wait(2000);
 
 	return {
 		amount: (data._sum.pricePaidInCents || 0) / 100,
 		numberOfSales: data._count,
 	};
 }
-
-// TODO: put in own file and folder
-// Testing purpose only
-// function wait(duration: number) {
-// 	return new Promise((resolve) => setTimeout(resolve, duration));
-// }
 
 async function getUserData() {
 	const [userCount, orderData] = await Promise.all([
