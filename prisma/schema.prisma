@@ -22,7 +22,7 @@ model Product {
   updatedAt              DateTime @updatedAt
 
   orders                Order[]
-  downloadVerifications DowndloadVerification[]
+  downloadVerifications DownloadVerification[]
 }
 
 model User {
@@ -43,14 +43,14 @@ model Order {
   userId    String
   productId String
   user      User    @relation(fields: [userId], references: [id], onDelete: Cascade)
-  Product   Product @relation(fields: [productId], references: [id], onDelete: Restrict)
+  product   Product @relation(fields: [productId], references: [id], onDelete: Restrict)
 }
 
-model DowndloadVerification {
+model DownloadVerification {
   id        String   @id @default(uuid())
   expiresAt DateTime
   createdAt DateTime @default(now())
 
   productId String
-  Product   Product @relation(fields: [productId], references: [id], onDelete: Cascade)
+  product   Product @relation(fields: [productId], references: [id], onDelete: Cascade)
 }
